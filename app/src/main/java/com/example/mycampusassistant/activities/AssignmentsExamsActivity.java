@@ -18,3 +18,9 @@ public class AssignmentsExamsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assignments_exams);
+
+        RecyclerView rvTasks = findViewById(R.id.rv_tasks);
+        rvTasks.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new TaskAdapter(taskList);
+        rvTasks.setAdapter(adapter);
+
