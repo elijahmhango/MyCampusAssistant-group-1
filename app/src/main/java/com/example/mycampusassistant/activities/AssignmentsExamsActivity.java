@@ -33,6 +33,40 @@ public class AssignmentsExamsActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+    private void showAddTaskDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Add Task");
+
+        LinearLayout layout = new LinearLayout(this);
+        layout.setOrientation(LinearLayout.VERTICAL);
+
+        EditText etTaskName = new EditText(this);
+        etTaskName.setHint("Task Name");
+        layout.addView(etTaskName);
+
+        EditText etDueDate = new EditText(this);
+        etDueDate.setHint("Due Date");
+        layout.addView(etDueDate);
+
+        builder.setView(layout);
+        builder.setPositiveButton("Add", (dialog, which) -> {
+            String name = etTaskName.getText().toString();
+            String dueDate = etDueDate.getText().toString();
+            if (!name.isEmpty() && !dueDate.isEmpty()) {
+                taskList.add(new Task(name, dueDate));
+                adapter.notifyDataSetChanged();
+                setTaskNotification(name, dueDate);
+            }
+        });
+        builder.setNegativeButton("Cancel", null);
+        builder.show();
+    }
+
+
+
+
+
+
 
 
 
