@@ -62,6 +62,25 @@ public class AssignmentsExamsActivity extends AppCompatActivity {
         builder.show();
     }
 
+    private void setTaskNotification(String taskName, String dueDate) {
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel("TASK_CHANNEL", "Task Alerts", NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "TASK_CHANNEL")
+                .setSmallIcon(R.drawable.ic_notification) // Add a notification icon
+                .setContentTitle("Task Reminder")
+                .setContentText(taskName + " is due on " + dueDate)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        notificationManager.notify((int) System.currentTimeMillis(), builder.build());
+    }
+}
+
+
+
 
 
 
