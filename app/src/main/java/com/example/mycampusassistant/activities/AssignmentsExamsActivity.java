@@ -24,3 +24,15 @@ public class AssignmentsExamsActivity extends AppCompatActivity {
         adapter = new TaskAdapter(taskList);
         rvTasks.setAdapter(adapter);
 
+        Button btnAddTask = findViewById(R.id.btn_add_task);
+        btnAddTask.setOnClickListener(v -> showAddTaskDialog());
+
+        // Sample data
+        taskList.add(new Task("Math HW", "5 June"));
+        taskList.add(new Task("Exam CS", "10 June"));
+        adapter.notifyDataSetChanged();
+    }
+
+
+
+
