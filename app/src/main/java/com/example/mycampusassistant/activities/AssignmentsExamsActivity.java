@@ -11,16 +11,10 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.mycampusassistant.R;
 
 public class AssignmentsExamsActivity extends AppCompatActivity {
+    private List<Task> taskList = new ArrayList<>();
+    private TaskAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_assignments_exams);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-    }
-}
